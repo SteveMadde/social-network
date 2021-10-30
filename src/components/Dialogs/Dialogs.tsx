@@ -19,8 +19,8 @@ type addDialogType = {
 };
 
 export let Dialogs = (props: addDialogType) => {
-    let DialogsElement = props.dialogs.map((d) => <DialogItem key={d.id} id={d.id} name={d.name}/>);
-    let MessagesElement = props.messages.map((m) => <Message key={m.id} message={m.message}/>);
+    let DialogsElement = props.dialogs.map((d, i) => <DialogItem key={i} id={d.id} name={d.name}/>);
+    let MessagesElement = props.messages.map((m, i) => <Message key={i} message={m.message}/>);
 
     let sendMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.currentTarget.value
