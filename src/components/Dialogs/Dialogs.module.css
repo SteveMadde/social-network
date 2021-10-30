@@ -1,0 +1,29 @@
+.dialogs {
+  display: flex;
+  background-color: cadetblue;
+}
+
+.dialogsItem {
+  padding: 10px;
+}
+
+.dialog a {
+  text-decoration: none;
+  color: burlywood;
+}
+
+.dialog a.activeLink {
+  color: gold;
+}
+
+.dialog {
+  padding: 10px;
+}
+
+.messages {
+  padding: 10px;
+}
+
+.message {
+  padding: 10px;
+}

@@ -1,0 +1,7 @@
+.profileInfo {
+  grid-area: p;
+  background-color: darkkhaki;
+}
+.profileInfo img {
+  width: 250px;
+}

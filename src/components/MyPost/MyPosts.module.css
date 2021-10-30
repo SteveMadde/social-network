@@ -1,0 +1,9 @@
+.mypost {
+  padding: 10px;
+  background-color: chocolate;
+}
+
+.button:active {
+  background-color: cadetblue;
+  transition: background-color 0.1ms;
+}
