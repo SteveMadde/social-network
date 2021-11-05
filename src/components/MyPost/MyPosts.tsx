@@ -1,45 +1,32 @@
 import React, {ChangeEvent} from "react";
 import s from "./MyPosts.module.css";
 import {Post} from "./Post";
-import {ActionsTypes, addPostAC, PostType} from "../Redax/State";
+import {PostType} from "../Redax/State";
 
-type addPostType = {
-    addPost: (PostMessage: string) => void;
+type MyPostType = {
     posts: Array<PostType>;
     newPostText: string
-    changeNewPostText: (newText: string) => void
-    dispatch: (action: ActionsTypes) => void
+    ChangePostText: (e:ChangeEvent<HTMLTextAreaElement>) => void
+    addPostHandler: () => void
 };
 
-export let MyPosts = (props: addPostType) => {
-    let PostElement = props.posts.map((p, index) => {
-        return <Post message={p.post} key={index}/>;
-    });
-    let newPostElement = React.createRef<HTMLTextAreaElement>();
+export let MyPosts = (props: MyPostType) => {
 
-    let addPostHandler = () => {
-        if (newPostElement.current) {
-            props.dispatch(addPostAC(props.newPostText) )
-            /*addPost(newPostElement.current.value);
-            newPostElement.current.value = " ";*/
-        }
-    };
-    // let [post, setPost] = useState(1)
-    let ChangePostText = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeNewPostText(e.currentTarget.value)
-    }
-    console.log(props)
     return (
         <div className={s.mypost}>
             {/* <button onClick={() => setPost(post+1)}> {post}</button>*/}
             <div>
-                <textarea ref={newPostElement} onChange={ChangePostText} value={props.newPostText}/>
+                <textarea onChange={props.ChangePostText} value={props.newPostText}/>
                 <div>
-                    <button className={s.button} onClick={addPostHandler}>
+                    <button className={s.button} onClick={props.addPostHandler}>
                         add post
                     </button>
                 </div>
-                {PostElement}
+                {
+                    props.posts.map((p, index) => {
+                        return <Post message={p.post} key={index}/>;
+                    })
+                }
             </div>
         </div>
     );

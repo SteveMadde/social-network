@@ -1,23 +1,22 @@
 import React from "react";
 import s from "./Profile.module.css";
-import {MyPosts} from "../MyPost/MyPosts";
 import {ProfileInfo} from "../ProfileInfo/ProfileInfo";
-import {ActionsTypes, PostType} from "../Redax/State";
+import {MyPostsContainer} from "../MyPost/MyPostsContainer";
 
-type addPostPageType = {
-    posts: Array<PostType>;
-    addPost: (PostMessage: string) => void;
-    newPostText: string
-    changeNewPostText: ( newText: string ) => void
-    dispatch: (action: ActionsTypes) => void
-};
 
-export let Profile = (props: addPostPageType) => {
+
+/*type ProfilePropsType = {
+    store: StoreType
+};*/
+
+
+
+
+export let Profile = () => {
     return (
         <div className={s.profile}>
             <ProfileInfo/>
-            <MyPosts posts={props.posts} addPost={props.addPost} newPostText={props.newPostText} changeNewPostText={props.changeNewPostText}
-             dispatch={props.dispatch} />
+            <MyPostsContainer/>
         </div>
     );
 };
