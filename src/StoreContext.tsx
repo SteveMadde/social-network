@@ -1,8 +1,9 @@
 import React from "react";
-import {StoreType} from "./components/Redax/State";
+import {StoreRedaxType} from "./components/Redax/Redax";
 
 
-const StoreContext = React.createContext({} as StoreType)
+
+const StoreContext = React.createContext({} as StoreRedaxType)
 
 
 export const Provider = (props: ProviderType) => {
@@ -17,6 +18,6 @@ export const Provider = (props: ProviderType) => {
 export default StoreContext;
 
 export type ProviderType = {
-    store: StoreType
+    store: StoreRedaxType
     children: React.ReactNode
 }

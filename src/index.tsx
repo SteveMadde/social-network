@@ -2,16 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import {store, StoreType} from "./components/Redax/State";
-
+import store, {StoreRedaxType} from "./components/Redax/Redax";
 import {BrowserRouter} from "react-router-dom";
-import {Provider} from "./StoreContext";
-/*
 import {Provider} from "react-redux";
-*/
 
 
-export let rerenderEntireTree = (store: StoreType) => {
+
+export let rerenderEntireTree = (store: StoreRedaxType) => {
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>

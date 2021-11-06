@@ -1,15 +1,47 @@
 import React, {ChangeEvent} from "react";
 import {addPostAC, changeNewTextAC} from "../Redax/State";
 import {MyPosts} from "./MyPosts";
-import StoreContext from "../../StoreContext";
+
+import {connect, } from "react-redux";
+import {DispatchType, StateType} from "../Redax/Redax";
+
+
+
+let mapStateToProps = (state: StateType) => {
+    return {
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
+    }
+}
+let mapDispatchToProps = (dispatch: DispatchType) => {
+    return {
+        ChangePostText: (e: ChangeEvent<HTMLTextAreaElement>) => {
+            let action = changeNewTextAC(e.currentTarget.value)
+            dispatch(action)
+        },
+        addPostHandler: () => {
+            let action = addPostAC()
+            dispatch(action)
+        }
+    }
+}
+
+export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+
+
+
+
+
+
+
 
 /*type MyPostsContainerType = {
     store: StoreType
 };*/
 
-export let MyPostsContainer = () => {
+/*export let MyPostsContainer = () => {
 
-    return ( <StoreContext.Consumer>
+    return (<StoreContext.Consumer>
         {
             (store) => {
                 let state = store.getState().ProfilePage
@@ -22,12 +54,12 @@ export let MyPostsContainer = () => {
                     store.dispatch(changeNewTextAC(e.currentTarget.value))
                 }
 
-    return        <MyPosts posts={state.posts} newPostText={state.newPostText} addPostHandler={addPostHandler}
-                     ChangePostText={ChangePostText}/>
+                return <MyPosts posts={state.posts} newPostText={state.newPostText} addPostHandler={addPostHandler}
+                                ChangePostText={ChangePostText}/>
+            }
         }
-        }
-        </StoreContext.Consumer> )
-}
+    </StoreContext.Consumer>)
+}*/
 
 /*
 {PostData.map(function (post){

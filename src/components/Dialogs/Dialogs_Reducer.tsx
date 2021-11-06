@@ -22,7 +22,7 @@ export const dialogReducer = (state = initialState, action: ActionsTypes) => {
           case ADD_DIALOG_MESSAGE :
               let newMessage: MessagesType = {
                   id: 1,
-                  message: action.dialogMessage
+                  message: state.newMessage
               }
               state.messages.push(newMessage)
               return state

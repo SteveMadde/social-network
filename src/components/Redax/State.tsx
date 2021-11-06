@@ -48,7 +48,7 @@ export const ADD_DIALOG_MESSAGE = "ADD_DIALOG_MESSAGE"
 
 
 
-export let store: StoreType = {
+/*export let store: StoreType = {
     getState() {
         return this._State
     },
@@ -77,8 +77,9 @@ export let store: StoreType = {
             ],
             newMessage: '',
         }
-    },
-    addPost(PostMessage: string) {
+    }
+}*/
+/*    addPost(PostMessage: string) {
         let newPost: PostType = {
             id: 7,
             post: PostMessage,
@@ -108,7 +109,8 @@ export let store: StoreType = {
         this._State.DialogsPage = dialogReducer(this._State.DialogsPage, action)
         rerenderEntireTree(this)
     }
-}
+}*/
+
 
 type addPostACType = ReturnType<typeof addPostAC>
 type changeNewTextACType = ReturnType<typeof changeNewTextAC>
@@ -116,9 +118,8 @@ type changeDialogMessageACType = ReturnType<typeof changeDialogMessageAC>
 type addDialogMessageACType = ReturnType<typeof addDialogMessageAC>
 export type ActionsTypes = changeDialogMessageACType | addDialogMessageACType | changeNewTextACType | addPostACType
 
-export const addPostAC = (PostMessage: string) => ({
+export const addPostAC = () => ({
         type: ADD_POST,
-        PostMessage: PostMessage
     }) as const
 export let changeNewTextAC = (newText: string) => {
     return {
@@ -132,9 +133,8 @@ export let changeDialogMessageAC = (newMessage: string) => {
         newMessage: newMessage
     } as const
 }
-export let addDialogMessageAC = (Message: string) => {
+export let addDialogMessageAC = () => {
     return {
         type: ADD_DIALOG_MESSAGE,
-        dialogMessage: Message
     } as const
 }
