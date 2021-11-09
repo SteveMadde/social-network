@@ -13,10 +13,6 @@ export const Provider = (props: ProviderType) => {
         </StoreContext.Provider>
     )
 }
-
-
-export default StoreContext;
-
 export type ProviderType = {
     store: StoreRedaxType
     children: React.ReactNode

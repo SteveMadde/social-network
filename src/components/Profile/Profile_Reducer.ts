@@ -1,4 +1,4 @@
-import {ActionsTypes, ADD_POST, CHANGE_NEW_POST_TEXT, PostType} from "../Redax/State";
+import {ActionsTypes, ADD_POST, CHANGE_NEW_POST_TEXT} from "../Redax/State";
 
 export let initialState = {
         posts: [
@@ -12,15 +12,16 @@ export let initialState = {
 export const profileReducer = (state = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case ADD_POST:
-            let newPost: PostType = {
-                id: 7,
-                post: state.newPostText,
-            };
-            state.posts.push(newPost)
-            return state
+            return {
+                ...state,
+                posts: [ ...state.posts, {id: 1, post: state.newPostText} ],
+                newPostText: ''
+            }
         case CHANGE_NEW_POST_TEXT: {
-            state.newPostText = action.newText
-            return state
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         }
         default: {
             return state

@@ -9,29 +9,32 @@ let initialState = {
         {id: 4, name: "Artur"},
         {id: 5, name: "Roma"},
     ],
-        messages: [
+    messages: [
         {id: 0, message: "First post"},
         {id: 1, message: "bla bl"},
         {id: 2, message: "badya badya"},
     ],
-        newMessage: '',
+    newMessage: '',
 }
 
 export const dialogReducer = (state = initialState, action: ActionsTypes) => {
-      switch(action.type) {
-          case ADD_DIALOG_MESSAGE :
-              let newMessage: MessagesType = {
-                  id: 1,
-                  message: state.newMessage
-              }
-              state.messages.push(newMessage)
-              return state
-          case CHANGE_NEW_MESSAGE : {
-              state.newMessage = action.newMessage
-              return state
-          }
-          default: {
-              return state
-          }
-      }
+
+    switch (action.type) {
+        case ADD_DIALOG_MESSAGE :
+            debugger
+            return {
+                ...state,
+                messages: [...state.messages, { id: 3, message: state.newMessage} ],
+                newMessage: ''
+            }
+        case CHANGE_NEW_MESSAGE : {
+            return {
+                ...state,
+                newMessage: action.newMessage
+            }
+        }
+        default: {
+            return state
+        }
+    }
 }

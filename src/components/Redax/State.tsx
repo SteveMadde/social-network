@@ -1,6 +1,3 @@
-import {rerenderEntireTree} from "../../index";
-import {profileReducer} from "../Profile/Profile_Reducer";
-import {dialogReducer} from "../Dialogs/Dialogs_Reducer";
 
 export type PostType = {
     id: number;

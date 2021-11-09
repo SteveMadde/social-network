@@ -4,15 +4,6 @@ import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {DispatchType, StateType} from "../Redax/Redax";
 
-/*type DialogsContainerType = {
-    store: StoreType
-    /!*  dialogs: Array<DialogsType>;
-      messages: Array<MessagesType>;
-      addDialog: (DialogMessage: string) => void;
-      dispatch: (action: ActionsTypes) => void
-      newMessage: string*!/
-};*/
-
 
 let mapStateToProps = (state: StateType) => {
     return {
