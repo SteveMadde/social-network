@@ -1,3 +1,12 @@
+import {
+    setTotalUsersCount,
+    setUsers,
+    setCurrentPage,
+    follow,
+    toggleIsFetching,
+    unfollow
+} from "../../Users/Users_Reducer";
+import {findAllByDisplayValue} from "@testing-library/react";
 
 export type PostType = {
     id: number;
@@ -11,6 +20,18 @@ export type ProfilePageType = {
     posts: Array<PostType>;
     newPostText: string
 };
+export type UserType = {
+    id: number
+    photoURL: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: UsersLocation
+}
+export type UsersLocation = {
+    city: string
+    country: string
+}
 export type MessagesType = {
     id: number;
     message: string;
@@ -41,8 +62,12 @@ export const ADD_POST = "ADD_POST"
 export const CHANGE_NEW_POST_TEXT = "CHANGE_NEW_POST_TEXT"
 export const CHANGE_NEW_MESSAGE = "CHANGE_NEW_MESSAGE"
 export const ADD_DIALOG_MESSAGE = "ADD_DIALOG_MESSAGE"
-
-
+export const FOLLOW = "FOLLOW"
+export const UN_FOLLOW = "UN_FOLLOW"
+export const SET_USERS = "SET_USERS"
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
+export const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
+export const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
 
 
 /*export let store: StoreType = {
@@ -75,6 +100,7 @@ export const ADD_DIALOG_MESSAGE = "ADD_DIALOG_MESSAGE"
             newMessage: '',
         }
     }
+
 }*/
 /*    addPost(PostMessage: string) {
         let newPost: PostType = {
@@ -107,17 +133,32 @@ export const ADD_DIALOG_MESSAGE = "ADD_DIALOG_MESSAGE"
         rerenderEntireTree(this)
     }
 }*/
-
-
+type setCurrentACType = ReturnType<typeof setCurrentPage>
+type isFetchingACType = ReturnType<typeof toggleIsFetching>
+type setTotalUsersCount = ReturnType<typeof setTotalUsersCount>
+type setUsersACType = ReturnType<typeof setUsers>
+type followACType = ReturnType<typeof follow>
+type unfollowACType = ReturnType<typeof unfollow>
 type addPostACType = ReturnType<typeof addPostAC>
 type changeNewTextACType = ReturnType<typeof changeNewTextAC>
 type changeDialogMessageACType = ReturnType<typeof changeDialogMessageAC>
 type addDialogMessageACType = ReturnType<typeof addDialogMessageAC>
-export type ActionsTypes = changeDialogMessageACType | addDialogMessageACType | changeNewTextACType | addPostACType
+export type ActionsTypes =
+    isFetchingACType
+    | setTotalUsersCount
+    | setCurrentACType
+    | unfollowACType
+    | followACType
+    | setUsersACType
+    | changeDialogMessageACType
+    | addDialogMessageACType
+    | changeNewTextACType
+    | addPostACType
+
 
 export const addPostAC = () => ({
-        type: ADD_POST,
-    }) as const
+    type: ADD_POST,
+}) as const
 export let changeNewTextAC = (newText: string) => {
     return {
         type: CHANGE_NEW_POST_TEXT,
@@ -126,7 +167,7 @@ export let changeNewTextAC = (newText: string) => {
 }
 export let changeDialogMessageAC = (newMessage: string) => {
     return {
-        type:CHANGE_NEW_MESSAGE,
+        type: CHANGE_NEW_MESSAGE,
         newMessage: newMessage
     } as const
 }

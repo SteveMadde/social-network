@@ -1,4 +1,4 @@
-import {ActionsTypes, ADD_DIALOG_MESSAGE, CHANGE_NEW_MESSAGE, MessagesType} from "../Redax/State";
+import {ActionsTypes, ADD_DIALOG_MESSAGE, CHANGE_NEW_MESSAGE} from "../Redax/State";
 
 let initialState = {
     dialogs: [
@@ -38,3 +38,5 @@ export const dialogReducer = (state = initialState, action: ActionsTypes) => {
         }
     }
 }
+
+
