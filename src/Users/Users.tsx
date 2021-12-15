@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import {UserType} from "../components/Redax/State";
 import userPhoto from "../Users/userPhoto.jpg"
 import s from "./Users.module.css"
@@ -35,7 +36,9 @@ export let Users = (props: UsersType) => {
         })}
         {props.users.map(user => {
             return <div>
+                <NavLink to={`/profile/${user.id}`}>
                 <img src={userPhoto} alt={''}/>
+                </NavLink>
                 {user.id}
                 <div>
                     {

@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Profile.module.css";
 import {ProfileInfo} from "../ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "../MyPost/MyPostsContainer";
+import {ProfileType} from "../Redax/State";
 
 
 
@@ -9,13 +10,15 @@ import {MyPostsContainer} from "../MyPost/MyPostsContainer";
     store: StoreType
 };*/
 
+type ProfilePropsType = {
+    profile: ProfileType
+}
 
 
-
-export let Profile = () => {
+export let Profile = (props: ProfilePropsType) => {
     return (
         <div className={s.profile}>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile} />
             <MyPostsContainer/>
         </div>
     );

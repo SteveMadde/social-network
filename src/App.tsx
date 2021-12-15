@@ -9,6 +9,7 @@ import {Settings} from "./components/Setting/Settings";
 import {HomePage} from "./components/HomePage/HomePage";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import { UsersLogicContainer} from "./Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 /*type AppPropsType = {
     store: StoreType
@@ -23,8 +24,8 @@ function App() {
                     <Header/>
                     <NavBar/>
                     <Route
-                        path="/profile"
-                        render={() => <Profile/>}/>
+                        path="/profile/:userId?"
+                        render={() => <ProfileContainer/>}/>
                     <Route path="/friends" render={() => <Friends/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>
                     <Route path="/dialogs" render={() => <DialogsContainer/>}/>

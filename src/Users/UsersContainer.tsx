@@ -48,18 +48,17 @@ export class UsersContainer extends React.Component<UsersContainerType, {}> {
     }
 
     render() {
-        return <> {this.props.isFetching ? <Preloader/> : null}
-            <Users users={this.props.users}
-                   follow={this.props.follow}
-                   unfollow={this.props.unfollow}
-                   setUsers={this.props.setUsers}
-                   totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   setCurrentPage={this.props.setCurrentPage}
-                   setTotalUsersCount={this.props.setTotalUsersCount}
-                   onPageChanger={this.onPageChanger}
-            />
+        return <> {this.props.isFetching ? <Preloader/> : <Users users={this.props.users}
+                                                                 follow={this.props.follow}
+                                                                 unfollow={this.props.unfollow}
+                                                                 setUsers={this.props.setUsers}
+                                                                 totalUsersCount={this.props.totalUsersCount}
+                                                                 pageSize={this.props.pageSize}
+                                                                 currentPage={this.props.currentPage}
+                                                                 setCurrentPage={this.props.setCurrentPage}
+                                                                 setTotalUsersCount={this.props.setTotalUsersCount}
+                                                                 onPageChanger={this.onPageChanger}
+        />}
         </>
     }
 }

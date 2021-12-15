@@ -7,6 +7,7 @@ import {
     unfollow
 } from "../../Users/Users_Reducer";
 import {findAllByDisplayValue} from "@testing-library/react";
+import {setUserProfile} from "../Profile/Profile_Reducer";
 
 export type PostType = {
     id: number;
@@ -20,6 +21,26 @@ export type ProfilePageType = {
     posts: Array<PostType>;
     newPostText: string
 };
+export type ProfileType = {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: {
+        github: string
+        vk: string
+        facebook: string
+        instagram: string
+        twitter: string
+        website: string
+        youtube: string
+        mainLink: string
+    }
+    photos: {
+        small: string | null
+        large: string | undefined
+    }
+}
 export type UserType = {
     id: number
     photoURL: string
@@ -68,6 +89,7 @@ export const SET_USERS = "SET_USERS"
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 export const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
 export const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
+export const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 
 /*export let store: StoreType = {
@@ -139,12 +161,14 @@ type setTotalUsersCount = ReturnType<typeof setTotalUsersCount>
 type setUsersACType = ReturnType<typeof setUsers>
 type followACType = ReturnType<typeof follow>
 type unfollowACType = ReturnType<typeof unfollow>
+type setUserProfileACType = ReturnType<typeof setUserProfile>
 type addPostACType = ReturnType<typeof addPostAC>
 type changeNewTextACType = ReturnType<typeof changeNewTextAC>
 type changeDialogMessageACType = ReturnType<typeof changeDialogMessageAC>
 type addDialogMessageACType = ReturnType<typeof addDialogMessageAC>
 export type ActionsTypes =
-    isFetchingACType
+    setUserProfileACType
+    | isFetchingACType
     | setTotalUsersCount
     | setCurrentACType
     | unfollowACType
