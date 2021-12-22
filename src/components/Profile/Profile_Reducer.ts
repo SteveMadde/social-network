@@ -2,9 +2,9 @@ import {
     ActionsTypes,
     ADD_POST,
     CHANGE_NEW_POST_TEXT,
-    ProfileType,
     SET_USER_PROFILE
 } from "../Redax/State";
+import {ProfileType} from "../../api";
 
 
 

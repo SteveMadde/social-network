@@ -10,3 +10,7 @@
   width: 1289px;
   height: 100px;
 }
+.login {
+  float: right;
+  color: red;
+}

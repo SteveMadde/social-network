@@ -2,7 +2,8 @@ import React from "react";
 import s from "./Profile.module.css";
 import {ProfileInfo} from "../ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "../MyPost/MyPostsContainer";
-import {ProfileType} from "../Redax/State";
+import {ProfileType} from "../../api";
+
 
 
 

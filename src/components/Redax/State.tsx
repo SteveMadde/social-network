@@ -4,10 +4,10 @@ import {
     setCurrentPage,
     follow,
     toggleIsFetching,
-    unfollow
+    unfollow, toggleFollowingProgress
 } from "../../Users/Users_Reducer";
-import {findAllByDisplayValue} from "@testing-library/react";
 import {setUserProfile} from "../Profile/Profile_Reducer";
+import {setAuthUserData} from "../Header/auth_Reducer";
 
 export type PostType = {
     id: number;
@@ -21,26 +21,6 @@ export type ProfilePageType = {
     posts: Array<PostType>;
     newPostText: string
 };
-export type ProfileType = {
-    userId: number
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    contacts: {
-        github: string
-        vk: string
-        facebook: string
-        instagram: string
-        twitter: string
-        website: string
-        youtube: string
-        mainLink: string
-    }
-    photos: {
-        small: string | null
-        large: string | undefined
-    }
-}
 export type UserType = {
     id: number
     photoURL: string
@@ -79,7 +59,9 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
     getState: () => RootStateType
 }
+
 export const ADD_POST = "ADD_POST"
+export const SET_USER_DATA = "SET_USER_DATA"
 export const CHANGE_NEW_POST_TEXT = "CHANGE_NEW_POST_TEXT"
 export const CHANGE_NEW_MESSAGE = "CHANGE_NEW_MESSAGE"
 export const ADD_DIALOG_MESSAGE = "ADD_DIALOG_MESSAGE"
@@ -90,8 +72,7 @@ export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 export const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
 export const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
 export const SET_USER_PROFILE = 'SET_USER_PROFILE'
-
-
+export const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 /*export let store: StoreType = {
     getState() {
         return this._State
@@ -155,7 +136,9 @@ export const SET_USER_PROFILE = 'SET_USER_PROFILE'
         rerenderEntireTree(this)
     }
 }*/
+type toggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgress>
 type setCurrentACType = ReturnType<typeof setCurrentPage>
+type setAuthUserDataACType = ReturnType<typeof setAuthUserData>
 type isFetchingACType = ReturnType<typeof toggleIsFetching>
 type setTotalUsersCount = ReturnType<typeof setTotalUsersCount>
 type setUsersACType = ReturnType<typeof setUsers>
@@ -167,7 +150,9 @@ type changeNewTextACType = ReturnType<typeof changeNewTextAC>
 type changeDialogMessageACType = ReturnType<typeof changeDialogMessageAC>
 type addDialogMessageACType = ReturnType<typeof addDialogMessageAC>
 export type ActionsTypes =
-    setUserProfileACType
+    toggleFollowingProgressACType
+    | setAuthUserDataACType
+    | setUserProfileACType
     | isFetchingACType
     | setTotalUsersCount
     | setCurrentACType
@@ -178,8 +163,6 @@ export type ActionsTypes =
     | addDialogMessageACType
     | changeNewTextACType
     | addPostACType
-
-
 export const addPostAC = () => ({
     type: ADD_POST,
 }) as const
