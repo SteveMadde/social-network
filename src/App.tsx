@@ -29,7 +29,7 @@ function App() {
                     <Route path="/friends" render={() => <Friends/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>
                     <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                    <Route path="/homepage" render={() => <UsersLogicContainer/>}/>
+                    <Route path="/homepage" render={() => <UsersLogicContainer />}/>
                 </div>
             </div>
         </BrowserRouter>
