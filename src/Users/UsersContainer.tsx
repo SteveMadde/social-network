@@ -55,7 +55,6 @@ export class UsersContainer extends React.Component<UsersContainerType, {}> {
                                                                  unFollow={this.props.unFollow}
                                                                  getUsers={this.props.getUsers}
                                                                  pageChanger={this.pageChanger}
-
         />}
         </>
     }

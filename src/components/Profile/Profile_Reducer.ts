@@ -4,7 +4,9 @@ import {
     CHANGE_NEW_POST_TEXT,
     SET_USER_PROFILE
 } from "../Redax/State";
-import {ProfileType} from "../../api";
+import {ProfileType, usersApi} from "../../api";
+import {ThunkDispatch} from "redux-thunk";
+import {StateType} from "../Redax/Redax";
 
 
 
@@ -68,3 +70,13 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
     }
 }
 export const setUserProfile = (profile: ProfileType) => ({type: SET_USER_PROFILE, profile} as const)
+
+
+export const getProfileId = (userId: string ) => {
+
+    return (dispatch: ThunkDispatch<StateType, any, ActionsTypes>) => {
+        usersApi.profile(userId).then((data) => {
+            dispatch(setUserProfile(data))
+        })
+    }
+}

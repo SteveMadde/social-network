@@ -6,13 +6,11 @@ import {Friends} from "./components/Friends/Friends";
 import {Settings} from "./components/Setting/Settings";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import { UsersLogicContainer} from "./Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Header/Login";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
-/*type AppPropsType = {
-    store: StoreType
-}*/
+
 
 
 function App() {

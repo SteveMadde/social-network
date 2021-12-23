@@ -4,13 +4,6 @@ import {ProfileInfo} from "../ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "../MyPost/MyPostsContainer";
 import {ProfileType} from "../../api";
 
-
-
-
-/*type ProfilePropsType = {
-    store: StoreType
-};*/
-
 type ProfilePropsType = {
     profile: ProfileType
 }

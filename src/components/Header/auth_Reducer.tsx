@@ -2,6 +2,9 @@ import {
     ActionsTypes,
     SET_USER_DATA,
 } from "../Redax/State";
+import {usersApi} from "../../api";
+import {ThunkDispatch} from "redux-thunk";
+import {StateType} from "../Redax/Redax";
 
 
 export type DataType = {
@@ -45,3 +48,12 @@ export const authReducer = (state = initialState, action: ActionsTypes) => {
 
 
 export const setAuthUserData = (data: DataType) => ({type: SET_USER_DATA, data} as const)
+
+export const getAuthMe = () => {
+    return (dispatch: ThunkDispatch<StateType, any, ActionsTypes>) => {
+        usersApi.authMe().then((data) => {
+            dispatch(setAuthUserData(data.data))
+        })
+    }
+}
+
