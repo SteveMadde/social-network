@@ -21,7 +21,6 @@ export const dialogReducer = (state = initialState, action: ActionsTypes) => {
 
     switch (action.type) {
         case ADD_DIALOG_MESSAGE :
-            debugger
             return {
                 ...state,
                 messages: [...state.messages, { id: 3, message: state.newMessage} ],

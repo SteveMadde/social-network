@@ -1,15 +1,43 @@
 import React, {ChangeEvent} from "react";
-import {addDialogMessageAC, changeDialogMessageAC,} from "../Redax/State";
+import {addDialogMessageAC, changeDialogMessageAC, DialogsType, MessagesType,} from "../Redax/State";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {DispatchType, StateType} from "../Redax/Redax";
+import {Redirect} from "react-router-dom";
 
+type DialogsContainerType = {
+    isAuth: boolean
+    dialogs: Array<DialogsType>;
+    messages: Array<MessagesType>;
+    newMessage: string
+    sendMessageChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    addDialogsHandler: () => void
+}
+
+
+class DialogsContainer extends React.Component<DialogsContainerType> {
+
+
+    render() {
+        return <>
+            {
+                !this.props.isAuth ? <Redirect to='/login'/> : <Dialogs dialogs={this.props.dialogs}
+                                                                        messages={this.props.messages}
+                                                                        newMessage={this.props.newMessage}
+                                                                        sendMessageChange={this.props.sendMessageChange}
+                                                                        addDialogsHandler={this.props.addDialogsHandler}/>
+
+            }
+        </>
+    }
+}
 
 let mapStateToProps = (state: StateType) => {
     return {
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
-        newMessage: state.dialogsPage.newMessage
+        newMessage: state.dialogsPage.newMessage,
+        isAuth: state.authData.isAuth
     }
 }
 let mapDispatchToProps = (dispatch: DispatchType) => {
@@ -25,7 +53,7 @@ let mapDispatchToProps = (dispatch: DispatchType) => {
     }
 }
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+export default connect(mapStateToProps, mapDispatchToProps)(DialogsContainer)
 
 
 

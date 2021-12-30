@@ -16,6 +16,7 @@ export let Dialogs = (props: DialogsPropsType) => {
     let DialogsElement = props.dialogs.map((d, i) => <DialogItem key={i} id={d.id} name={d.name}/>);
     let MessagesElement = props.messages.map((m, i) => <Message key={i} message={m.message}/>);
 
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogItem}>

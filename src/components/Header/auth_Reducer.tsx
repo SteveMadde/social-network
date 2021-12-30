@@ -52,7 +52,9 @@ export const setAuthUserData = (data: DataType) => ({type: SET_USER_DATA, data} 
 export const getAuthMe = () => {
     return (dispatch: ThunkDispatch<StateType, any, ActionsTypes>) => {
         usersApi.authMe().then((data) => {
-            dispatch(setAuthUserData(data.data))
+            if (data.resultCode === 0) {
+                dispatch(setAuthUserData(data.data))
+            }
         })
     }
 }

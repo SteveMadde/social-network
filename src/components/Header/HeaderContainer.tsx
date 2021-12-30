@@ -32,8 +32,8 @@ class HeaderContainer extends React.Component<HeaderContainerType> {
 }
 
 let mapStateToProps = (state: StateType) => ({
-    isAuth: state.setAuthUserData.isAuth,
-    login: state.setAuthUserData.data.login
+    isAuth: state.authData.isAuth,
+    login: state.authData.data.login
 })
 
 /*let WithUrlDataContainerComponent = withRouter(HeaderContainer)*/

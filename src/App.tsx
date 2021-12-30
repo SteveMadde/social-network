@@ -4,7 +4,7 @@ import {NavBar} from "./components/NavBar/NavBar";
 import {BrowserRouter, Route} from "react-router-dom";
 import {Friends} from "./components/Friends/Friends";
 import {Settings} from "./components/Setting/Settings";
-import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import { UsersLogicContainer} from "./Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Header/Login";
