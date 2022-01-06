@@ -30,6 +30,7 @@ export let Dialogs = (props: DialogsPropsType) => {
 };
 
 
+
     /*<DialogItem id={DialogsData[0].id} name={DialogsData[0].name}/>
                     <DialogItem id={DialogsData[1].id} name={DialogsData[1].name}/>
                     <DialogItem id={DialogsData[2].id} name={DialogsData[2].name}/>

@@ -19,12 +19,11 @@ type ProfileContainerType = {
     getProfileId: (userId: string) => void
     getStatus: (userId: string) => void
     profile: ProfileType
-}
-type StatusType = {
     statusUpdate: (status: string) => void
 }
+
 type OwnPropsType = mapStateToPropsType & ProfileContainerType
-type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType & StatusType
+type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 
 class ProfileContainer extends React.Component<PropsType> {
