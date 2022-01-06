@@ -7,6 +7,8 @@ let image = "https://sun9-43.userapi.com/impg/K8LTMidtLJ1-5DKTE-xrYgOkOpfCilW8AP
 
 type ProfileInfoType = {
     profile: ProfileType
+    status: string
+    statusUpdate: (status: string) => void
 }
 
 export let ProfileInfo = (props: ProfileInfoType) => {
@@ -23,7 +25,7 @@ export let ProfileInfo = (props: ProfileInfoType) => {
           <li> {props.profile.lookingForAJob}</li>
           <li> {props.profile.userId}</li>
         </ul>
-          <ProfileStatus status={'Hallo my Friend'} />
+          <ProfileStatus status={props.status} statusUpdate={props.statusUpdate}/>
       </div>
     </div>
   );

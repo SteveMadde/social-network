@@ -6,7 +6,7 @@ import {
     toggleIsFetching,
     unfollow, toggleFollowingProgress
 } from "../../Users/Users_Reducer";
-import {setUserProfile} from "../Profile/Profile_Reducer";
+import {setStatus, setUserProfile} from "../Profile/Profile_Reducer";
 import {setAuthUserData} from "../Header/auth_Reducer";
 
 export type PostType = {
@@ -61,6 +61,7 @@ export type StoreType = {
 }
 
 export const ADD_POST = "ADD_POST"
+export const SET_STATUS = "SET_STATUS"
 export const SET_USER_DATA = "SET_USER_DATA"
 export const CHANGE_NEW_POST_TEXT = "CHANGE_NEW_POST_TEXT"
 export const CHANGE_NEW_MESSAGE = "CHANGE_NEW_MESSAGE"
@@ -136,6 +137,7 @@ export const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
         rerenderEntireTree(this)
     }
 }*/
+type setStatusACType = ReturnType<typeof setStatus>
 type toggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgress>
 type setCurrentACType = ReturnType<typeof setCurrentPage>
 type setAuthUserDataACType = ReturnType<typeof setAuthUserData>
@@ -150,7 +152,8 @@ type changeNewTextACType = ReturnType<typeof changeNewTextAC>
 type changeDialogMessageACType = ReturnType<typeof changeDialogMessageAC>
 type addDialogMessageACType = ReturnType<typeof addDialogMessageAC>
 export type ActionsTypes =
-    toggleFollowingProgressACType
+    setStatusACType
+    | toggleFollowingProgressACType
     | setAuthUserDataACType
     | setUserProfileACType
     | isFetchingACType

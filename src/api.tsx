@@ -50,13 +50,13 @@ export const usersApi = {
                 return response.data
             })
     },
-    authMe() {
-        return instance.get<AuthMeResponseType>(`auth/me`).then(response => {
+    profile(userId: string) {
+        return instance.get<ProfileType>(`profile/${userId}`).then(response => {
             return response.data
         })
     },
-    profile(userId: string) {
-        return instance.get<ProfileType>(`profile/${userId}`).then(response => {
+    authMe() {
+        return instance.get<AuthMeResponseType>(`auth/me`).then(response => {
             return response.data
         })
     },
@@ -69,6 +69,19 @@ export const usersApi = {
         return instance.post(`follow/${userId}`).then(response => {
             return response.data
         })
+    }
+}
+export const profileApi = {
+    profile(userId: string) {
+        return instance.get<ProfileType>(`profile/${userId}`).then(response => {
+            return response.data
+        })
+    },
+    status(userId: string) {
+        return instance.get(`profile/status/`+ userId)
+    },
+    statusUpdate(status: string) {
+        return instance.put(`profile/status/` + {status: status})
     }
 }
 
