@@ -37,6 +37,12 @@ export let NavBar = () => {
           Settings{" "}
         </NavLink>
       </div>
+        <div className={s.item}>
+        <NavLink to={"/addDialogs"} activeClassName={s.activeLink}>
+          {" "}
+            addDialogs{" "}
+        </NavLink>
+      </div>
     </div>
   );
 };

@@ -1,26 +1,24 @@
-import React, {ChangeEvent} from "react";
-import {addPostAC, changeNewTextAC} from "../Redax/State";
+import React from "react";
+import {addPostAC} from "../Redax/State";
 import {MyPosts} from "./MyPosts";
 
-import {connect, } from "react-redux";
+import {connect,} from "react-redux";
 import {DispatchType, StateType} from "../Redax/Redax";
-
 
 
 let mapStateToProps = (state: StateType) => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
     }
 }
 let mapDispatchToProps = (dispatch: DispatchType) => {
     return {
-        ChangePostText: (e: ChangeEvent<HTMLTextAreaElement>) => {
+        /*ChangePostText: (e: ChangeEvent<HTMLTextAreaElement>) => {
             let action = changeNewTextAC(e.currentTarget.value)
             dispatch(action)
-        },
-        addPostHandler: () => {
-            let action = addPostAC()
+        },*/
+        addPostHandler: (newPostText: string) => {
+            let action = addPostAC(newPostText)
             dispatch(action)
         }
     }

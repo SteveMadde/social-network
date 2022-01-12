@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form';
 
 export type DispatchType = typeof store.dispatch
-console.log()
+
 const rootReducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogReducer,
@@ -22,5 +22,8 @@ export default store
 export type AppStateType = typeof rootReducers
 export type StateType = ReturnType<typeof store.getState>
 export type StoreReduxType = typeof store
+
+//@ts-ignore
+window.store = store
 
 

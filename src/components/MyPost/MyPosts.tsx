@@ -1,36 +1,54 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import s from "./MyPosts.module.css";
 import {Post} from "./Post";
 import {PostType} from "../Redax/State";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
 type MyPostType = {
     posts: Array<PostType>;
-    newPostText: string
-    ChangePostText: (e:ChangeEvent<HTMLTextAreaElement>) => void
-    addPostHandler: () => void
+    addPostHandler: (newPostText: string) => void
 };
+
+type addPostType = {
+    newPostText: string
+}
+
+export const AddPostNewForm: React.FC<InjectedFormProps<addPostType>> = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <Field name={'newPostText'} placeholder={'Enter'} component={'textarea'}/>
+        <div>
+            <button className={s.button}>
+                add post
+            </button>
+        </div>
+    </form>;
+}
+export const AddPostReduxForm = reduxForm<addPostType>({
+    form: 'ProfileAddPostNewForm'
+    })(AddPostNewForm)
 
 export let MyPosts = (props: MyPostType) => {
 
+    let addPost = (formData:addPostType) => {
+        props.addPostHandler(formData.newPostText)
+    }
+
+    let PostElement = props.posts.map((p, index) => {
+        return <Post message={p.post} key={index}/>;
+    })
+
     return (
-        <div className={s.mypost}>
-            {/* <button onClick={() => setPost(post+1)}> {post}</button>*/}
-            <div>
-                <textarea onChange={props.ChangePostText} value={props.newPostText}/>
-                <div>
-                    <button className={s.button} onClick={props.addPostHandler}>
-                        add post
-                    </button>
-                </div>
-                {
-                    props.posts.map((p, index) => {
-                        return <Post message={p.post} key={index}/>;
-                    })
-                }
-            </div>
+        <div className={s.my_post}>
+            <AddPostReduxForm onSubmit={addPost}/>
+            {/*<AddPostNewForm onChange={props.ChangePostText} value={props.newPostText} onClick={props.addPostHandler}/>*/}
+            {PostElement}
         </div>
     );
 };
+
+
+
+export default MyPosts;
 
 /*
 {PostData.map(function (post){

@@ -1,18 +1,11 @@
-import {
-    ActionsTypes,
-    ADD_POST,
-    CHANGE_NEW_POST_TEXT, SET_STATUS,
-    SET_USER_PROFILE
-} from "../Redax/State";
+import {ActionsTypes, ADD_POST, SET_STATUS, SET_USER_PROFILE} from "../Redax/State";
 import {profileApi, ProfileType, usersApi} from "../../api";
 import {ThunkDispatch} from "redux-thunk";
 import {StateType} from "../Redax/Redax";
 
 
-
 type initialStateType  = {
     posts: {id: number, post: string}[],
-    newPostText: string,
     profile: ProfileType,
     status: string
 }
@@ -24,7 +17,7 @@ export let initialState: initialStateType = {
         {id: 2, post: "Hallo"},
         {id: 2, post: "123fg"},
     ],
-    newPostText: 'privet ya strtoka',
+
     status: '',
     profile: {
         userId: 1,
@@ -52,15 +45,9 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, {id: 1, post: state.newPostText}],
-                newPostText: ''
-            }
-        case CHANGE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
-            }
+                posts: [...state.posts, {id: 1, post: action.newPostText}],
 
+            }
         case SET_USER_PROFILE:
             return {
                 ...state,

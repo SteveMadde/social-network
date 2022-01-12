@@ -166,8 +166,9 @@ export type ActionsTypes =
     | addDialogMessageACType
     | changeNewTextACType
     | addPostACType
-export const addPostAC = () => ({
+export const addPostAC = (newPostText: string) => ({
     type: ADD_POST,
+    newPostText
 }) as const
 export let changeNewTextAC = (newText: string) => {
     return {

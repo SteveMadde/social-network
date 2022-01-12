@@ -4,6 +4,7 @@ import {Message} from "./Messages/Messages";
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {DialogsType, MessagesType} from "../Redax/State";
 
+
 type DialogsPropsType = {
     dialogs: Array<DialogsType>;
     messages: Array<MessagesType>;
@@ -12,7 +13,7 @@ type DialogsPropsType = {
     addDialogsHandler: () => void
 };
 
-export let Dialogs = (props: DialogsPropsType) => {
+export const Dialogs = (props: DialogsPropsType) => {
     let DialogsElement = props.dialogs.map((d, i) => <DialogItem key={i} id={d.id} name={d.name}/>);
     let MessagesElement = props.messages.map((m, i) => <Message key={i} message={m.message}/>);
 
@@ -28,7 +29,6 @@ export let Dialogs = (props: DialogsPropsType) => {
         </div>
     );
 };
-
 
 
     /*<DialogItem id={DialogsData[0].id} name={DialogsData[0].name}/>
